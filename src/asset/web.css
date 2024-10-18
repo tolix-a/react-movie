@@ -1,0 +1,992 @@
+@charset "UTF-8";
+:root {
+  --pink:#FF005E;
+  --yellow-green:#BAEC32;
+  --light-gray: #B1B1B1;
+  --role-gray: #6b6b6b;
+  --under-line: #e2e2e2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+a:hover {
+  color: var(--pink);
+}
+
+.selected {
+  color: var(--pink);
+}
+
+header {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+header > .h-menu {
+  display: flex;
+  width: 1420px;
+  justify-content: space-between;
+}
+header > .h-menu > nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+header > .h-menu > nav > a {
+  color: black;
+  font-weight: 400;
+  font-size: 20px;
+}
+header > .h-menu > nav > a:hover {
+  color: var(--pink);
+  font-weight: 400;
+}
+header > .h-menu > div {
+  display: flex;
+}
+header > .h-menu > div > .head-search {
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+}
+header > .h-menu > div > .head-search p {
+  padding-right: 5px;
+}
+header > .h-menu > div > .head-search p img {
+  width: 30px;
+}
+header > .h-menu > div > .head-search > input {
+  width: 300px;
+  height: 30px;
+  padding: 0 10px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+header > .h-menu > div > p > a {
+  color: black;
+  font-weight: 800;
+  font-size: 36px;
+}
+
+footer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1420px;
+}
+footer div p {
+  width: 50%;
+  text-align: center;
+}
+footer div p a {
+  color: white;
+  font-weight: 800;
+  font-size: 64px;
+}
+footer div .h-menu {
+  width: 50%;
+}
+footer div .h-menu nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+footer div .h-menu nav a {
+  color: white;
+  font-weight: 300;
+  font-size: 32px;
+  border-bottom: 1px solid white;
+}
+footer div .h-menu nav a:nth-of-type(2):hover {
+  color: var(--pink);
+}
+footer div .h-menu nav a:hover {
+  color: var(--yellow-green);
+}
+
+.sortbtn {
+  display: flex;
+  justify-content: space-between;
+}
+.sortbtn > div {
+  display: flex;
+  gap: 10px;
+}
+.sortbtn > div .btn {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.sortbtn > div .btn button {
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+.sortbtn > div .btn button span {
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--role-gray);
+  text-transform: capitalize;
+}
+.sortbtn > div .btn .select {
+  position: absolute;
+  top: 60px;
+  left: -20%;
+  z-index: 25;
+  width: 350px;
+  height: 450px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sortbtn > div .btn .select article {
+  width: 80%;
+}
+.sortbtn > div .btn .select article p {
+  width: 80%;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.sortbtn > div .btn .select article ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 360px;
+  overflow-y: auto;
+}
+.sortbtn > div .btn .select article ul li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--under-line);
+  color: var(--role-gray);
+  font-weight: 600;
+}
+.sortbtn > div .btn .select article ul li:last-of-type {
+  border: none;
+}
+.sortbtn > div .btn .select article ul li:hover {
+  color: var(--pink);
+}
+.sortbtn > button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--pink);
+}
+
+.swiper {
+  width: 100%;
+  position: static !important;
+  overflow: visible;
+}
+
+.swiper-pagination {
+  bottom: 40px !important;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home main {
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url("../../../public/img/insideout2 back.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.home main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+.home main > * {
+  position: relative;
+  z-index: 2;
+}
+.home main .box {
+  width: 1420px;
+  height: 660px;
+  display: flex;
+  justify-content: center;
+}
+.home main .box > p {
+  width: 500px;
+  height: 660px;
+}
+.home main .box > p > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px 0 0 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.home main .box > .info {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 100px 50px 100px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.home main .box > .info > h1 {
+  font-size: 64px;
+  line-height: 70px;
+}
+.home main .box > .info > .date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #444;
+  margin: 20px 0 40px 0;
+}
+.home main .box > .info > .date > p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-right: 25px;
+}
+.home main .box > .info > .date > article {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.home main .box > .info > .date > article > p {
+  font-size: 20px;
+  font-weight: 400;
+}
+.home main .box > .info > p {
+  font-size: 24px;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+.home main .box > .info a {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: 400;
+  color: black;
+}
+.home main .box > .info > button {
+  margin-top: 30px;
+  cursor: pointer;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  font-size: 23px;
+  font-weight: 500;
+}
+.home main .box > .info > button:hover {
+  color: black;
+}
+.home > div {
+  width: 1420px;
+  margin-bottom: 100px;
+}
+.home > div section h2 {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+.home > div section h2 span {
+  color: var(--light-gray);
+  padding-left: 10px;
+  font-weight: 500;
+}
+.home > div section > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.home > div section > div a {
+  color: black;
+  font-size: 20px;
+}
+.home > div section > div div {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.home > div section > div div button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+.home > div section article {
+  width: 1420px;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 90px;
+  border-bottom: 1px solid var(--under-line);
+  overflow: hidden;
+  position: relative;
+}
+.home > div section article figure {
+  width: 200px;
+  cursor: pointer;
+}
+.home > div section article figure img {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.home > div section article figure img:hover {
+  filter: brightness(80%);
+}
+.home > div section article figure figcaption {
+  font-weight: 600;
+  font-size: 19px;
+}
+.home > div section article figure p {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: var(--role-gray);
+}
+.home > div section article figure p span {
+  color: var(--role-gray);
+  font-weight: 700;
+}
+.home > div section > .up p {
+  color: var(--pink);
+}
+.home > div section > .up p span {
+  color: black;
+}
+.home > div section > .up p b {
+  color: var(--role-gray);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.detailpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.detailpage main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.detailpage main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  /* 아래는 어두운 배경 효과를 위한 밝기 조절 예시입니다. */
+  mix-blend-mode: multiply; /* 이미지와 오버레이 혼합 모드 */
+  z-index: 1; /* 메인 내용 위에 오버레이가 있도록 설정 */
+}
+.detailpage main > * {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+.detailpage main .box {
+  margin-top: 100px;
+  width: 1420px;
+  height: 667px;
+  display: flex;
+  justify-content: space-between;
+}
+.detailpage main .box > .info {
+  width: 855px;
+  display: flex;
+  flex-direction: column;
+}
+.detailpage main .box > .info > section > h1 {
+  font-size: 64px;
+}
+.detailpage main .box > .info > section > .date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+}
+.detailpage main .box > .info > section > .date > p {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+.detailpage main .box > .info > section > .date > p > span {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--yellow-green);
+  padding: 0 5px;
+}
+.detailpage main .box > .info > section > .date > article {
+  display: flex;
+  align-items: center;
+}
+.detailpage main .box > .info > section > .date > article > div {
+  border: 1px solid white;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  line-height: 31px;
+  font-size: 20px;
+  font-weight: 300;
+  margin-right: 25px;
+}
+.detailpage main .box > .info > section > .date > article > p {
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+.detailpage main .box > .info > section > .date > article > p > span {
+  font-size: 10px;
+  padding: 0 15px;
+}
+.detailpage main .box > .info > section > .date > article > p > div {
+  display: flex;
+  gap: 10px;
+}
+.detailpage main .box > .info > section > .date > article > p > div > p {
+  font-size: 18px;
+}
+.detailpage main .box > .info > section > ul {
+  display: flex;
+  gap: 10px;
+}
+.detailpage main .box > .info > section > ul > li > a {
+  color: white;
+  font-size: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  padding: 5px 30px;
+}
+.detailpage main .box > .info > em {
+  font-size: 32px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 65px;
+}
+.detailpage main .box > .info .ott {
+  margin-top: 65px;
+  display: flex;
+}
+.detailpage main .box > .info .ott h2 {
+  width: 20%;
+}
+.detailpage main .box > .info .ott div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.detailpage main .box > .info .ott div p {
+  font-size: 20px;
+  font-weight: 300;
+  padding-right: 20px;
+  line-height: 35px;
+}
+.detailpage main .box > .info > article {
+  margin-top: 40px;
+}
+.detailpage main .box > .info > article h2 {
+  font-size: 28px;
+}
+.detailpage main .box > .info > article p {
+  font-size: 20px;
+  font-weight: 300;
+}
+.detailpage main .box > .info > article > .name {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.detailpage main .box > .info > article > .name > .director {
+  padding-right: 50px;
+}
+.detailpage main .box > .info > article > .name > .casts span {
+  padding-right: 13px;
+}
+.detailpage main .box > .info > article > .name > .casts span:nth-of-type(3) {
+  padding-right: 0;
+}
+.detailpage main .box > p {
+  width: 480px;
+  height: 667px;
+}
+.detailpage main .box > p > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.detailpage > div {
+  width: 1420px;
+  margin: 85px 0 50px 0;
+}
+.detailpage > div > section {
+  margin-bottom: 100px;
+}
+.detailpage > div > section h2 {
+  font-size: 32px;
+}
+.detailpage > div > section img {
+  margin-bottom: 10px;
+}
+.detailpage > div > section > article {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  gap: 30px;
+}
+.detailpage > div > section > article > figure {
+  width: 16.6666666667%;
+}
+.detailpage > div > section > article > figure > img {
+  width: 100%;
+  border-radius: 5px;
+}
+.detailpage > div > section > article > figure > figcaption {
+  font-weight: 700;
+  font-size: 19px;
+}
+.detailpage > div > section > article > figure > p {
+  margin-top: 5px;
+  color: var(--role-gray);
+  font-weight: 400;
+}
+.detailpage > div > section > article > figure > p span {
+  font-size: 10px;
+}
+.detailpage > div > .cast > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.detailpage > div > .cast > div h2 {
+  font-size: 32px;
+  text-align: center;
+}
+.detailpage > div > .cast > div a {
+  font-size: 16px;
+  color: black;
+}
+.detailpage > div > .media h2 {
+  margin-bottom: 20px;
+}
+.detailpage > div > .media > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.detailpage > div > .media > div > ul {
+  display: flex;
+  gap: 40px;
+}
+.detailpage > div > .media > div > ul > li button {
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.detailpage > div > .media > div > ul > li button > span {
+  color: var(--light-gray);
+  font-size: 22px;
+  padding-left: 10px;
+}
+.detailpage > div > .media > div > a {
+  color: black;
+}
+.detailpage > div > .media > article {
+  width: 1420px;
+  height: 460px;
+  overflow-x: auto;
+}
+.detailpage > div > .media > article > figure {
+  display: flex;
+  width: 50%;
+}
+.detailpage > div > .media > article > figure img {
+  height: 100%;
+  border-radius: 0;
+}
+.detailpage > div > .media > article > .poster {
+  display: flex;
+  width: 25%;
+}
+.detailpage > div > .media > article > .poster img {
+  height: 100%;
+  border-radius: 0;
+}
+.detailpage > div > .metadata h2 {
+  margin-bottom: 30px;
+}
+.detailpage > div > .metadata div {
+  display: flex;
+}
+.detailpage > div > .metadata div ul {
+  display: flex;
+  flex-direction: column;
+  width: 33.3333333333%;
+  gap: 20px;
+}
+.detailpage > div > .metadata div ul b {
+  width: 50%;
+  color: var(--pink);
+  font-weight: 500;
+}
+.detailpage > div > .metadata div ul li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.detailpage > div > .metadata div ul li div {
+  display: flex;
+  flex-direction: column;
+}
+.detailpage > div > .metadata div ul li div p {
+  align-items: flex-start;
+  padding-bottom: 10px;
+}
+.detailpage > div > .metadata div ul:nth-of-type(1) p {
+  padding-bottom: 0;
+}
+.detailpage > div > .season img {
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+.detailpage > div > .season > article, .detailpage > div .rec > article {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.detailpage > div > .season > article figure, .detailpage > div .rec > article figure {
+  padding-bottom: 70px;
+  cursor: pointer;
+}
+.detailpage > div > .season > article figure img, .detailpage > div .rec > article figure img {
+  width: 100%;
+  height: 300px;
+}
+.detailpage > div > .season > article figure img:hover, .detailpage > div .rec > article figure img:hover {
+  filter: brightness(80%);
+}
+.detailpage > div > .season > article figure figcaption, .detailpage > div .rec > article figure figcaption {
+  font-size: 19px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.detailpage > div > .season > article figure:hover, .detailpage > div .rec > article figure:hover {
+  color: var(--pink);
+}
+
+.backto {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.backto:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.backto > div {
+  display: flex;
+  justify-content: space-between;
+  width: 1420px;
+  padding: 10px 0;
+}
+.backto > div a {
+  color: black;
+}
+.backto > div a p {
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: 700;
+  color: var(--light-gray);
+}
+.backto > div a img {
+  width: 30px;
+  color: black;
+}
+.backto > div a:nth-of-type(2) {
+  text-align: right;
+}
+
+.castcrew {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.castcrew body {
+  width: 1420PX;
+  margin: 50px 0 100px 0;
+}
+.castcrew body h2 {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+.castcrew body h3 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pink);
+}
+.castcrew body h3 span {
+  padding-left: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--light-gray);
+}
+.castcrew body .crew {
+  margin-bottom: 50px;
+}
+.castcrew body .crew h4 {
+  font-size: 17px;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: var(--role-gray);
+}
+.castcrew body article {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.castcrew body article figure {
+  display: flex;
+  width: calc(25% - 20px);
+}
+.castcrew body article figure img {
+  width: 80px;
+  height: 90px;
+  margin-right: 20px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.castcrew body article figure div {
+  width: calc(100% - 90px);
+  height: 80px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--under-line);
+}
+.castcrew body article figure div b {
+  display: inline-block;
+  height: 50%;
+  font-size: 18px;
+  font-weight: 700;
+}
+.castcrew body article figure div p {
+  height: 50%;
+  font-size: 16px;
+  color: var(--role-gray);
+}
+.castcrew body > article {
+  margin-bottom: 70px;
+}
+
+.mediapage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mediapage section {
+  width: 1420PX;
+  margin: 50px 0 100px 0;
+}
+.mediapage section h2 {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+.mediapage section .tap {
+  display: flex;
+  margin-bottom: 30px;
+  gap: 40px;
+}
+.mediapage section .tap > ul {
+  display: flex;
+  gap: 40px;
+}
+.mediapage section .tap > ul > li button {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--role-gray);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.mediapage section .tap > ul > li button > span {
+  color: var(--light-gray);
+  font-size: 22px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+.mediapage section .tap > ul > li .selected {
+  color: var(--pink);
+}
+.mediapage section article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 70px;
+}
+.mediapage section article figure {
+  display: flex;
+  flex-direction: column;
+  width: calc(25% - 20px);
+  border-bottom: 1px solid var(--under-line);
+}
+.mediapage section article figure img {
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.mediapage section article figure div {
+  padding-top: 10px;
+}
+.mediapage section article figure div b {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+}
+.mediapage section article figure div p {
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: var(--role-gray);
+}
+.mediapage section > .video figure {
+  padding-bottom: 10px;
+}
+.mediapage section > .backdrop p, .mediapage section .poster p {
+  display: flex;
+  justify-content: space-between;
+}
+.mediapage section > .backdrop p span, .mediapage section .poster p span {
+  padding-left: 10px;
+  color: var(--role-gray);
+}
+.mediapage section > .poster figure {
+  width: calc(16.6666666667% - 20px);
+}
+
+.moviepage, .tvpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.moviepage > div, .tvpage > div {
+  width: 1420PX;
+  margin: 100px 0 150px 0;
+}
+.moviepage > div h1, .tvpage > div h1 {
+  margin-bottom: 20px;
+  font-size: 64px;
+}
+.moviepage > div > article, .tvpage > div > article {
+  margin: 30px 0 70px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 30px;
+}
+.moviepage > div > article > figure, .tvpage > div > article > figure {
+  cursor: pointer;
+}
+.moviepage > div > article > figure:hover, .tvpage > div > article > figure:hover {
+  color: var(--pink);
+}
+.moviepage > div > article > figure > img, .tvpage > div > article > figure > img {
+  width: 100%;
+  border-radius: 5px;
+}
+.moviepage > div > article > figure > img:hover, .tvpage > div > article > figure > img:hover {
+  filter: brightness(80%);
+}
+.moviepage > div > article > figure > figcaption, .tvpage > div > article > figure > figcaption {
+  font-weight: 600;
+  font-size: 19px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.moviepage > div > article > figure > p, .tvpage > div > article > figure > p {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: var(--role-gray);
+  font-weight: 400;
+}
+.moviepage > div > article > figure > p span, .tvpage > div > article > figure > p span {
+  font-weight: 700;
+  color: var(--yellow-green);
+}
+.moviepage > div > p, .tvpage > div > p {
+  display: flex;
+  justify-content: center;
+}
+.moviepage > div > p button, .tvpage > div > p button {
+  border: none;
+  cursor: pointer;
+  background-color: var(--pink);
+  padding: 20px 100px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+}
+.moviepage > div > p button:hover, .tvpage > div > p button:hover {
+  background-color: var(--yellow-green);
+}
