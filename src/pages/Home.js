@@ -100,7 +100,6 @@ const Home = () => {
           <h2>Upcoming</h2>
           <article className='up'>
             <Upcomin data={res.upcoming} type="movie"/>
-            
           </article>
         </section>
 

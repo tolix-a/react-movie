@@ -1,7 +1,18 @@
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route, Link, useNavigate } from 'react-router-dom'
 import React from 'react'
+import { useState } from 'react'
 
-const header = () => {
+const Header = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm) {
+      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
   return (
     <header>
       <div className='h-menu'>
@@ -11,10 +22,13 @@ const header = () => {
           <Link to='/search'>Random</Link>
         </nav>
         <div>
-          <div className='head-search'>
-            <p><img src='/ion_search-outline.svg'/></p>
-            <input type='text' placeholder='search'></input>
-          </div>
+          <form className='head-search' onSubmit={handleSearch}>
+            <button type='submit'><img src='/ion_search-outline.svg'/></button>
+            <input type='text' placeholder='search'
+            value={searchTerm} 
+            onChange={(e) => setSearchTerm(e.target.value)}>
+            </input>
+          </form>
           <p><Link to='/'>API.MTV</Link></p>
         </div>
       </div>
@@ -22,4 +36,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Header

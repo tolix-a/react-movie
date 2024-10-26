@@ -1,98 +1,126 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
+import { Link, useLocation } from 'react-router-dom';
+import { apiSearch } from '../api/api';
 
 const Search = () => {
-
+  const [res, setRes] = useState();
+  
   const [isV, setIsV] = useState(1);
   const button3 = (contentId) =>{
     setIsV(contentId);
   }
+
+  //검색 쿼리 가져오기
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get('query');
+
+  // useEffect(() => {
+  //   (async function (query) {
+  //     setRes(await apiSearch(query))
+  //   }())
+  // }, [query])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      if (query) {
+        const result = await apiSearch(query);
+        setRes(result);
+      }
+    };
+    fetchData();
+  }, [query]);
+
+console.log(res);
+
+  if(!res) return <>준비중..</>;
 
   return (
     <div className='search'>
       <Header/>
 
       <div>
-        <h1>Search Results " <span>Coraline</span> "</h1>
+        <h1>Search Results " <span>{query}</span> "</h1>
         <div className='tap'>
           <ul>
             <li>
               <button className={isV === 1 ? 'selected': ''}
-              onClick={()=>button3(1)}>All<span>3</span></button>
+              onClick={()=>button3(1)}>Movies<span>{res.movie.data.total_results}</span></button>
               </li>
             <li>
               <button className={isV === 2 ? 'selected': ''}
-              onClick={()=>button3(2)}>Movies<span>2</span></button>
+              onClick={()=>button3(2)}>TV Shows<span>{res.tv.data.total_results}</span></button>
               </li>
             <li>
               <button className={isV === 3 ? 'selected': ''}
-              onClick={()=>button3(3)}>TV Shows<span>1</span></button>
+              onClick={()=>button3(3)}>Collection<span>{res.coll.data.total_results}</span></button>
               </li>
           </ul>
         </div>
 
-        {isV === 1 &&
-        <article className='all'>
-          <figure>
-            <p><img src='./img/dune.jpg'/></p>
-            <div>
-              <h3>Dune <span>(2009)</span></h3>
-              <p>...</p>
-              <p>Wandering her rambling old house in her boring new town, 11-year-old Coraline discovers a hidden door to a strangely idealized version of her life. In order to stay in the fantasy, she must make a frighteningly real sacrifice.</p>
+        <article>
+        {isV === 1 && res.movie.data.results.map(item=>(
+          <Link to={`/detail/movie/${item.id}`}>
+          <figure key={item.id}>
+            <p>
+              {item.poster_path ? (
+                <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}/>
+              ) : (
+                <div style={{ 
+                  width: '128px', height:'180px', 
+                  backgroundColor: 'var(--light-gray)',
+                }}>
+                </div>
+              )}
+            </p>
+            <div className='explain'>
+              <h3>{item.title} <span>( {item.original_title} )</span></h3>
+              <h5>Language: {item.original_language} • {item.release_date} <span>★ {item.vote_average}</span></h5>
+              <p>{item.overview}</p>
             </div>
           </figure>
-          <figure>
-            <p><img src='./img/royal opera.jpg'/></p>
-            <div>
-              <h3>Royal Opera House Live 2024/25: The Marriage of Figaro <span>(2024)</span></h3>
-              <p>Trailer • 1:17 • March 21, 2024</p>
-              <p>Count Almaviva lives with his Countess on their estate near Seville. The Count has his eye on his wife’s maid Susanna, who is betrothed to the Count’s servant, Figaro. Much to Figaro’s dismay, the Count plans to seduce Susanna on wedding night. Meanwhile, Cherubino, the Count’s young page, is infatuated with the Countess, but has just been dismissed after being discovered with Barbarina, the gardener Antonio’s daughter.</p>
-            </div>
-          </figure>
-          <figure>
-            <p><img src='./img/dune.jpg'/></p>
-            <div>
-              <h3>Dune <span>(2009)</span></h3>
-              <p>...</p>
-              <p>Wandering her rambling old house in her boring new town, 11-year-old Coraline discovers a hidden door to a strangely idealized version of her life. In order to stay in the fantasy, she must make a frighteningly real sacrifice.</p>
-            </div>
-          </figure>
-          
-        </article>
+          </Link>
+        ))
         }
-        {isV === 2 &&
-        <article className='all'>
-          <figure>
-            <p><img src='./img/dune.jpg'/></p>
-            <div>
-              <h3>Dune <span>(2009)</span></h3>
-              <p>Trailer • 1:17 • March 21, 2024</p>
-              <p>Wandering her rambling old house in her boring new town, 11-year-old Coraline discovers a hidden door to a strangely idealized version of her life. In order to stay in the fantasy, she must make a frighteningly real sacrifice.</p>
+        {isV === 2 && res.tv.data.results.map(item=>(
+          <Link to={`/detail/tv/${item.id}`}>
+          <figure key={item.id}>
+            <p>
+              {item.poster_path ? (
+                <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}/>
+              ) : (
+                <div style={{ 
+                  width: '128px', height:'180px', 
+                  backgroundColor: 'var(--light-gray)',
+                }}>
+                </div>
+              )}
+            </p>
+            <div className='explain'>
+              <h3>{item.name} <span>( {item.original_name} )</span></h3>
+              <h5>Language: {item.original_language} • {item.first_air_date} <span>★ {item.vote_average}</span></h5>
+              <p>{item.overview}</p>
             </div>
           </figure>
-          <figure>
-            <p><img src='./img/royal opera.jpg'/></p>
-            <div>
-              <h3>Royal Opera House Live 2024/25: The Marriage of Figaro <span>(2024)</span></h3>
-              <p>Trailer • 1:17 • March 21, 2024</p>
-              <p>Count Almaviva lives with his Countess on their estate near Seville. The Count has his eye on his wife’s maid Susanna, who is betrothed to the Count’s servant, Figaro. Much to Figaro’s dismay, the Count plans to seduce Susanna on wedding night. Meanwhile, Cherubino, the Count’s young page, is infatuated with the Countess, but has just been dismissed after being discovered with Barbarina, the gardener Antonio’s daughter.</p>
-            </div>
-          </figure>
-        </article>
+          </Link>
+        ))
         }
-        {isV === 3 &&
-        <article className='all'>
-          <figure>
-            <p><img src='./img/dune.jpg'/></p>
-            <div>
-              <h3>Dune <span>(2009)</span></h3>
-              <p>Trailer • 1:17 • March 21, 2024</p>
-              <p>Wandering her rambling old house in her boring new town, 11-year-old Coraline discovers a hidden door to a strangely idealized version of her life. In order to stay in the fantasy, she must make a frighteningly real sacrifice.</p>
+        {isV === 3 && res.coll.data.results.map(item=>(
+          <Link>
+          <figure key={item.id}>
+            <p><img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}/></p>
+            <div className='explain'>
+              <h3>{item.name} <span>( {item.original_name} )</span></h3>
+              <h5>Language: {item.original_language}</h5>
+              <p>{item.overview}</p>
             </div>
           </figure>
-        </article>
+          </Link>
+        ))
         }
+        </article>
       </div>
 
       <Footer/>

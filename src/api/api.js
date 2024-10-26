@@ -75,3 +75,13 @@ export async function apiDetailtv(type,id){
 
    return {detai,ott,rec,certiv};
 }
+
+export async function apiSearch (query) {
+   let [coll,movie,tv] = await Promise.all([
+      instant.get(`/search/collection?include_adult=false&query=${query}`),
+      instant.get(`/search/movie?include_adult=false&query=${query}`),
+      instant.get(`/search/tv?include_adult=false&query=${query}`)
+   ])
+
+   return {coll,movie,tv} ;
+}
