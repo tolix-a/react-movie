@@ -9,6 +9,7 @@ const Cast = () => {
   const location = useLocation();
   const data = location.state?.data;
   console.log(data);
+  //상단 버튼으로 미디어에서 넘어오면 id 값은 잘 있는데 여기 data가 undefined임
 
   const sum = data?.casts?.cast || data.credits.cast;
   const sum2 = data?.casts?.crew || data.credits.crew;
@@ -35,11 +36,12 @@ const Cast = () => {
 
       <div className='backto'>
         <div>
-          <Link to='/detail'>
+          <Link to={data.casts ? `/detail/movie/${id}` : `/detail/tv/${id}`}>
             <p>{data.title ? (data.title) : (data.name) }</p>
             <img src='/arrow_back.svg'/>
           </Link>
-          <Link to='/media'>
+          {/* <Link to='/media'> */}
+          <Link to={data.casts ? `/detail/movie/${id}/media` : `/detail/tv/${id}/media`}>
             <p>Media</p>
             <img src='/arrow_forward.svg'/>
           </Link>
@@ -52,7 +54,7 @@ const Cast = () => {
         <h3>Casts<span>{data?.casts?.cast.length || data?.credits?.cast.length}</span></h3>
         <article>
           {sum && sum.map(item=>
-            <figure>
+            <figure key={item.id}>
               {item.profile_path ? (
                 <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}/>
                 ) : (

@@ -14,19 +14,7 @@ const Media = () => {
   const location = useLocation();
   const data = location.state?.data;
   console.log(data);
-  
 
-  /* const idd = '533535'; // 실제 아이디로 변경
-  let targetPath = '';
-
-  if (data.casts) {
-    // 영화인 경우
-    targetPath = `/detail/movie/${idd}/cast`;
-  } else if (data.credits) {
-    // TV인 경우
-    targetPath = `/detail/tv/${idd}/cast`;
-  }
- */
 
   return (
     <div className='mediapage'>
@@ -34,13 +22,13 @@ const Media = () => {
 
       <div className='backto'>
         <div>
-          <Link to='../'>
+          {/* <Link to={data.casts ? `/detail/movie/${id}` : data.credits ? `/detail/tv/${id}` : '#'}> */}
+          <Link to={data.casts ? `/detail/movie/${id}` : `/detail/tv/${id}`}>
             <p>{data.title ? (data.title) : (data.name) }</p>
             <img src='/arrow_back.svg'/>
           </Link>
-          <Link to='/cast'>
           {/* <Link to={targetPath}> */}
-          {/* <Link to={data.cast ? `/detail/movie/${id}/cast` : data.credits ? `/data/tv/${id}/cast` : '#'}> */}
+          <Link to={data.casts ? `/detail/movie/${id}/cast` : `/detail/tv/${id}/cast`}>
             <p>Casts / Crew</p>
             <img src='/arrow_forward.svg'/>
           </Link>
@@ -68,7 +56,7 @@ const Media = () => {
         <div>
         <article className='video'>
         {isV === 1 && data.videos.results.map(item=>
-          <figure>
+          <figure key={item.id}>
             <iframe src={`https://www.youtube.com/embed/${item.key}`} frameborder="0" allowFullScreen></iframe>
             <div>
               <p>{item.type} • 1:17 • March 21, 2024</p>
@@ -86,7 +74,7 @@ const Media = () => {
         </article>
         <article className='backdrop'>
         {isV === 2 && data.images.backdrops.map(item=>
-          <figure>
+          <figure key={item.id}>
             <img src={`https://image.tmdb.org/t/p/original/${item.file_path}`}/>
             <div>
               <p>Size <span>{item.width}x{item.height}</span></p>
@@ -96,7 +84,7 @@ const Media = () => {
         </article>
         <article className='poster'>
         {isV === 3 && data.images.posters.map(item=>
-          <figure>
+          <figure key={item.id}>
             <img src={`https://image.tmdb.org/t/p/original/${item.file_path}`}/>
             <div>
               <p>Size <span>{item.width}x{item.height}</span></p>
