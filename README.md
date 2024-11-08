@@ -6,12 +6,12 @@ TMDB api를 이용한 영화 정보 웹사이트입니다.
 ##
 
 ### `개발 환경`
-React, SCSS
+React, SCSS, axios, figma, github, git
 
 ### `제작 기간`
 2024.09.11 - ( 약 1달 )
 
-### `예시`
+### `기능`
 이미지를 넣자!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -28,9 +28,6 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### 후기
-안 넣어도 됨
-
-
+-------
 ### `npm run build` fails to minify
 여기다 이미지를 넣을까
