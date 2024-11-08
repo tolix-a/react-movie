@@ -12,21 +12,18 @@ React, SCSS, axios, figma, github, git
 2024.09.11 - ( 약 1달 )
 
 ### `기능`
-이미지를 넣자!
+- 검색
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `과정`
+1. 구성
+   
+2. 개발
 
 ##
 
 ### 트러블슈팅
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- cast, media 페이지에서 media, cast 페이지로 못 넘어감 <br/>
+  : 음 해결 못함!
 
 -------
 ### `npm run build` fails to minify
