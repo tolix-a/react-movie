@@ -26,6 +26,8 @@ React, SCSS, Swiper, axios, figma, github, git
   : scrollTo를 이용해 경로를 이동할 때마다 페이지가 최상단으로 이동하게 함
 - cast, media 페이지에서 media, cast 페이지로 못 넘어감 <br/>
   : 음 해결 못함!
+- 홈 today/thisweek 2개가 같이 움직임
+  : 각자 움직이도록 state을 하나 더 만듦
 
 -------
 여기다 이미지를 넣을까
