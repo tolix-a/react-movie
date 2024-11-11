@@ -24,12 +24,16 @@ const Home = () => {
     },[])
   
     const [isTday,setIsTday] = useState(true);
+    const [isTday2,setIsTday2] = useState(true);
+
     const tClick = ()=>{
       setIsTday(true);
     }
     const wClick = ()=>{
       setIsTday(false);
     }
+    const tClick2 = () => setIsTday2(true);
+    const wClick2 = () => setIsTday2(false);
 
     if(!res) return <>준비중..</>;
 
@@ -121,10 +125,10 @@ const Home = () => {
           <div>
             <h2>Trending TV</h2>
             <div>
-              <button className={isTday? 'selected':''} onClick={tClick}>
+              <button className={isTday2? 'selected':''} onClick={tClick2}>
                 Today</button>
               <p>/</p>
-              <button className={!isTday? 'selected':''} onClick={wClick}>
+              <button className={!isTday2? 'selected':''} onClick={wClick2}>
                 This Week</button>
             </div>
           </div>

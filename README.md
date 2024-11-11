@@ -6,31 +6,28 @@ TMDB api를 이용한 영화 정보 웹사이트입니다.
 ##
 
 ### `개발 환경`
-React, SCSS
+React, SCSS, Swiper, axios, figma, github, git
 
 ### `제작 기간`
 2024.09.11 - ( 약 1달 )
 
-### `예시`
-이미지를 넣자!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `기능`
+- 검색
+- 필터링 및 정렬
+- 더보기
+- 탑버튼
+- 모달 창
+- 반응형
 
 ##
 
 ### 트러블슈팅
+- 디테일 페이지에서 view all을 눌러서 다른 페이지로 이동하면 페이지 맨 위쪽이 아님 <br/>
+  : scrollTo를 이용해 경로를 이동할 때마다 페이지가 최상단으로 이동하게 함
+- cast, media 페이지에서 media, cast 페이지로 못 넘어감 <br/>
+  : 음 해결 못함!
+- 홈 today/thisweek 2개가 같이 움직임
+  : 각자 움직이도록 state을 하나 더 만듦
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### 후기
-안 넣어도 됨
-
-
-### `npm run build` fails to minify
+-------
 여기다 이미지를 넣을까

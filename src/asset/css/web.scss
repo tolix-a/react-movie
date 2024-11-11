@@ -644,6 +644,7 @@ footer{
                >img{
                   width: 100%;
                   border-radius: 5px;
+                  object-fit: cover;
                }
                >figcaption{
                   font-weight: 700;
@@ -721,7 +722,7 @@ footer{
                img{                
                   height: 460px;
                   border-radius: 0;
-
+                  object-fit: cover;
                }
             }
             >.poster{
